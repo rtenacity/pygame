@@ -40,7 +40,7 @@ while running:
             if event.key == K_RIGHT:
                 x = x + 5
             if event.key == K_c:
-                color_change = color_change - 20
+                color_change = color_change - 10
             
 
 
