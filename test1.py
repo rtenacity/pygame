@@ -49,7 +49,7 @@ while running:
     screen.fill((255, 255, 255))
 
     # Draw a solid blue circle in the center
-    pygame.draw.circle(screen, (0, 0, color_change), (x, y), 75)
+    pygame.draw.rect(screen, (0, 0, color_change), pygame.Rect(x, y, 100, 100))
 
     # Flip the display
     pygame.display.flip()
