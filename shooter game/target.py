@@ -1,7 +1,7 @@
 import pygame
 WHITE = (255, 255, 255)
  
-class Gun(pygame.sprite.Sprite):
+class Target(pygame.sprite.Sprite):
     
     def __init__(self, color, width, height):
         super().__init__()
@@ -15,12 +15,3 @@ class Gun(pygame.sprite.Sprite):
         
         self.rect = self.image.get_rect()
         
-    def moveUp(self, pixels):
-        self.rect.y -= pixels
-        if self.rect.y < 80:
-          self.rect.y = 80
-          
-    def moveDown(self, pixels):
-        self.rect.y += pixels
-        if self.rect.y > 1000:
-          self.rect.y = 1000

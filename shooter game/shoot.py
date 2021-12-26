@@ -1,6 +1,7 @@
 import pygame
 from gun import Gun
 from bullet import Bullet
+from target import Target
 import time
 
 pygame.init()
@@ -8,17 +9,21 @@ pygame.init()
 BLACK = (0,0,0)
 WHITE = (255,255,255)
 
-size = (1280, 720)
+size = (1000, 500)
 screen = pygame.display.set_mode(size)
 pygame.display.set_caption("Shooter")
  
-gunA = Gun(BLACK, 100, 10)
-gunA.rect.x = 20
-gunA.rect.y = 500
+gunA = Gun(BLACK, 70, 50)
+gunA.rect.x = 25
+gunA.rect.y = 220
+
+target = Target(BLACK, 10, 100)
+target.rect.x = 950
+target.rect.y = 200
 
 all_sprites_list = pygame.sprite.Group()
 all_sprites_list.add(gunA)
-
+all_sprites_list.add(target)
 
 carryOn = True
 
