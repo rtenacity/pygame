@@ -3,6 +3,8 @@ from gun import Gun
 from bullet import Bullet
 from target import Target
 import time
+import math
+from random import randint
 
 pygame.init()
  
@@ -17,15 +19,21 @@ gunA = Gun(BLACK, 70, 50)
 gunA.rect.x = 25
 gunA.rect.y = 220
 
-target = Target(BLACK, 10, 100)
+target = Target(BLACK, 10, 50)
 target.rect.x = 950
-target.rect.y = 200
+target.rect.y = 220
+
+bullet = Bullet(BLACK, 10, 10)
 
 all_sprites_list = pygame.sprite.Group()
 all_sprites_list.add(gunA)
 all_sprites_list.add(target)
 
 carryOn = True
+
+x = 1
+
+score = 0
 
 clock = pygame.time.Clock()
 
@@ -43,17 +51,25 @@ while carryOn:
         gunA.moveUp(5)
     if keys[pygame.K_s]:
         gunA.moveDown(5)
-    if keys[pygame.K_SPACE]:
+    if event.type == pygame.MOUSEBUTTONDOWN:
         bullet = Bullet(BLACK, 10, 10)
         bullet.rect.x = gunA.rect.x
         bullet.rect.y = gunA.rect.y
         all_sprites_list.add(bullet) 
         time.sleep(0.05)
-        
+    
+    if pygame.sprite.collide_rect(bullet, target):
+       print("hello" + str(x))
+       x+=1
+       score+=1
+       target.rect.y = randint(50, 450)
+
+    font = pygame.font.Font(None, 74)
+    text = font.render(str(score), 1, WHITE)
+    screen.blit(text, (250,10))
 
     all_sprites_list.update()
     screen.fill(WHITE)
-    
     all_sprites_list.draw(screen) 
 
     pygame.display.flip()

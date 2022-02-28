@@ -1,4 +1,6 @@
+from random import randint
 import pygame
+from random import randint
 WHITE = (255, 255, 255)
  
 class Target(pygame.sprite.Sprite):
@@ -14,4 +16,3 @@ class Target(pygame.sprite.Sprite):
         pygame.draw.rect(self.image, color, [0, 0, width, height])
         
         self.rect = self.image.get_rect()
-        
